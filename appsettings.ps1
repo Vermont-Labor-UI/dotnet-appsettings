@@ -24,8 +24,6 @@ Write-Host("Writing ClientStateName, WEBSITE_TIME_ZONE, and ASPNETCORE_ENVIRONME
 $hash['ClientStateName'] = $ClientStateName
 $hash['WEBSITE_TIME_ZONE'] = $TimeZone
 $hash['ASPNETCORE_ENVIRONMENT'] = $Environment
-$hash['Data:Logging:ApplicationName'] = $AppName
-$hash['Data:Logging:EnvironmentName'] = $Environment
 
 if ($LoggingSeqKey) 
 {
