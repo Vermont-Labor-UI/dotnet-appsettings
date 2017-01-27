@@ -3,8 +3,8 @@ Param(
     [string]$ResourceGroup,
     [string]$ClientStateName = "Idaho",
     [string]$TimeZone = "Mountain Standard Time",
-    [string]$Environment = "Development"
-    [string]$LoggingSeqKey = $null
+    [string]$Environment = "Development",
+    [string]$LoggingSeqKey = $null,
     [string]$LoggingSeqServerUri = $null
 )
 
