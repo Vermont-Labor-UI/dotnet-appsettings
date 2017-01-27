@@ -4,6 +4,8 @@ Param(
     [string]$ClientStateName = "Idaho",
     [string]$TimeZone = "Mountain Standard Time",
     [string]$Environment = "Development"
+    [string]$LoggingSeqKey = $null
+    [string]$LoggingSeqServerUri = $null
 )
 
 Write-Host("Connecting to WebApp")
@@ -22,6 +24,16 @@ Write-Host("Writing ClientStateName, WEBSITE_TIME_ZONE, and ASPNETCORE_ENVIRONME
 $hash['ClientStateName'] = $ClientStateName
 $hash['WEBSITE_TIME_ZONE'] = $TimeZone
 $hash['ASPNETCORE_ENVIRONMENT'] = $Environment
+
+if ($LoggingSeqKey) 
+{
+	$hash['Data:Logging:SeqApiKey'] = $LoggingSeqKey
+}
+if ($LoggingSeqServerUri) 
+{
+	$hash['Data:Logging:SeqServerUri'] = $LoggingSeqServerUri
+}
+
 
 Write-Host("Setting AppSettings on WebApp")
 Set-AzureRMWebAppSlot -ResourceGroupName $ResourceGroup -Name $AppName -AppSettings $hash -Slot production
