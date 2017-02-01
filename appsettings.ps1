@@ -63,6 +63,10 @@ if ($LoggingSeqServerUri)
 
 Write-Host "Dumping SiteConfig"
 Write-Host $webApp.SiteConfig.ConnectionStrings
+ForEach ($prop in $webApp.StieConfig)
+{
+    write-host $prop
+}
 ForEach ($connString in $webApp.SiteConfig.ConnectionStrings)
 {
     Write-Host "Type: " $connString.Type.ToString "/Value" $connString.ConnectionString
