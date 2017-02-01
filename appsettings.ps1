@@ -28,8 +28,6 @@ function CheckAppSetting
             $hahs[$keyName] = $expectedValue;
         }
     }
-
-    return $hash;
 }
 
 Write-Host("Connecting to WebApp")
@@ -45,17 +43,17 @@ ForEach ($kvp in $appSettingList) {
 }
 
 Write-Host("Verifying App Settings")
-$hash = CheckAppSetting($hash, 'ClientStateName', $ClientStateName)
-$hash = CheckAppSetting($hash, 'WEBSITE_TIME_ZONE', $TimeZone)
-$hash = CheckAppSetting($hash, 'ASPNETCORE_ENVIRONMENT', $Environment)
+CheckAppSetting $hash 'ClientStateName' $ClientStateName
+CheckAppSetting $hash 'WEBSITE_TIME_ZONE' $TimeZone
+CheckAppSetting $hash 'ASPNETCORE_ENVIRONMENT' $Environment
 
 if ($LoggingSeqKey) 
 {
-    $hash = CheckAppSetting($hash, 'Data:Logging:SeqApiKey', $LoggingSeqKey)
+    CheckAppSetting $hash 'Data:Logging:SeqApiKey' $LoggingSeqKey
 }
 if ($LoggingSeqServerUri) 
 {
-    $hash = CheckAppSetting($hash, 'Data:Logging:SeqServerUri', $LoggingSeqServerUri)
+    CheckAppSetting $hash 'Data:Logging:SeqServerUri' $LoggingSeqServerUri
 }
 
 
