@@ -61,6 +61,7 @@ if ($LoggingSeqServerUri)
 }
 
 
+Write-Host "Dumping SiteConfig"
 write-host $webApp.SiteConfig
 
 #Write-Host("Setting AppSettings on WebApp")
