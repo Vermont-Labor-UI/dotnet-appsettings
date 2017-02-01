@@ -25,7 +25,11 @@ function CheckAppSetting
         if($existingValue -ne $expectedValue)
         {
             Write-Warning("$keyName is not correct.  Updating from $existingValue to $expectedValue");
-            $hahs[$keyName] = $expectedValue;
+            $hash[$keyName] = $expectedValue;
+        }
+        else
+        {
+            Write-Host("$keyName is correct")
         }
     }
 }
@@ -57,6 +61,7 @@ if ($LoggingSeqServerUri)
 }
 
 
+write-host $webApp.SiteConfig
 
 #Write-Host("Setting AppSettings on WebApp")
 #Set-AzureRMWebAppSlot -ResourceGroupName $ResourceGroup -Name $AppName -AppSettings $hash -Slot production
