@@ -11,7 +11,7 @@ Param(
 
 function CheckAppSetting
 {
-    Param([System.Object[]] $hash, [string] $keyName, [string] $expectedValue)
+    Param([hashtable] $hash, [string] $keyName, [string] $expectedValue)
 
     Write-Host("Verifying AppSetting $keyName")
     if (!$hash.ContainsKey($keyName))
