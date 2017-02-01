@@ -11,7 +11,7 @@ Param(
 
 function CheckAppSetting
 {
-    Param([hashtable] $hash, [string] $keyName, [string] $expectedValue)
+    Param([System.Object[]] $hash, [string] $keyName, [string] $expectedValue)
 
     Write-Host("Verifying AppSetting $keyName")
     if (!$hash.ContainsKey($keyName))
@@ -39,7 +39,7 @@ Write-Host("Reading AppSettings")
 $appSettingList = $webApp.SiteConfig.AppSettings
 
 
-[hashtable] $hash = @{}
+$hash = @{}
 ForEach ($kvp in $appSettingList) {
     $hash[$kvp.Name] = $kvp.Value
 }
