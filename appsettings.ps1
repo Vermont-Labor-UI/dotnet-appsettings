@@ -39,7 +39,7 @@ Write-Host("Reading AppSettings")
 $appSettingList = $webApp.SiteConfig.AppSettings
 
 
-$hash = @{}
+[hashtable] $hash = @{}
 ForEach ($kvp in $appSettingList) {
     $hash[$kvp.Name] = $kvp.Value
 }
