@@ -62,7 +62,9 @@ if ($LoggingSeqServerUri)
 
 
 Write-Host "Dumping SiteConfig"
-write-host $($webApp.SiteConfig)
-
+ForEach ($connString in $webApp.SiteConfig.ConnectionStrings)
+{
+    Write-Host "Type: " $connString.Type.ToString "/Value" $connString.ConnectionString
+}
 #Write-Host("Setting AppSettings on WebApp")
 #Set-AzureRMWebAppSlot -ResourceGroupName $ResourceGroup -Name $AppName -AppSettings $hash -Slot production
