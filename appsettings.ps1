@@ -5,8 +5,7 @@ Param(
     [string]$TimeZone = "Mountain Standard Time",
     [string]$Environment = "Development",
     [string]$LoggingSeqKey = $null,
-    [string]$LoggingSeqServerUri = $null,
-    [bool]$VerifySqlConnectionExistance = $false
+    [string]$LoggingSeqServerUri = $null
 )
 
 function CheckAppSetting
@@ -60,16 +59,5 @@ if ($LoggingSeqServerUri)
     CheckAppSetting $hash 'Data:Logging:SeqServerUri' $LoggingSeqServerUri
 }
 
-
-Write-Host "Dumping SiteConfig"
-Write-Host $webApp.SiteConfig.ConnectionStrings
-ForEach ($prop in $webApp.StieConfig)
-{
-    write-host $prop
-}
-ForEach ($connString in $webApp.SiteConfig.ConnectionStrings)
-{
-    Write-Host "Type: " $connString.Type.ToString "/Value" $connString.ConnectionString
-}
-#Write-Host("Setting AppSettings on WebApp")
-#Set-AzureRMWebAppSlot -ResourceGroupName $ResourceGroup -Name $AppName -AppSettings $hash -Slot production
+Write-Host("Setting AppSettings on WebApp")
+Set-AzureRMWebAppSlot -ResourceGroupName $ResourceGroup -Name $AppName -AppSettings $hash -Slot production
