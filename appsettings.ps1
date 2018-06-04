@@ -49,6 +49,7 @@ Write-Host("Verifying App Settings")
 CheckAppSetting $hash 'ClientStateName' $ClientStateName
 CheckAppSetting $hash 'WEBSITE_TIME_ZONE' $TimeZone
 CheckAppSetting $hash 'ASPNETCORE_ENVIRONMENT' $Environment
+CheckAppSetting $hash 'EnableApplicationInsights' 'true'
 
 if ($LoggingSeqKey) 
 {
