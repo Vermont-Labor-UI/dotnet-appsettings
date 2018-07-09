@@ -61,4 +61,11 @@ if ($LoggingSeqServerUri)
 }
 
 Write-Host("Setting AppSettings on WebApp")
-Set-AzureRMWebAppSlot -ResourceGroupName $ResourceGroup -Name $AppName -AppSettings $hash -Slot production
+try {
+    Set-AzureRMWebAppSlot -ResourceGroupName $ResourceGroup -Name $AppName -AppSettings $hash -Slot production
+}
+catch [Exception] {
+    Write-Host 'We Caught ' $PSItem.Exception.GetType().FullName -fore green
+    Write-Host $PSItem.Exception.Message
+    throw
+}
