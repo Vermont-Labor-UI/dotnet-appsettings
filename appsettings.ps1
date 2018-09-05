@@ -54,6 +54,7 @@ CheckAppSetting $hash 'EnableApplicationInsights' 'true'
 if ($LoggingSeqKey) 
 {
     CheckAppSetting $hash 'Data:Logging:SeqApiKey' $LoggingSeqKey
+    CheckAppSetting $hash 'Serilog:WriteTo:0:Args:apiKey' $LoggingSeqKey
 }
 if ($LoggingSeqServerUri) 
 {
